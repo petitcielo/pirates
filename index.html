@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les pirates du Labo-TP4</title>
+
+    <style>
+
+        /* ---- PAGE FIXE ---- */
+        body {
+            width: 1137px;
+            margin: 0 auto;
+            background-color: #DAC691;
+        }
+
+        /* ---- HEADER ---- */
+        header {
+            width: 1137px;
+            text-align: center;
+            padding: 50px;
+            background-color: #fff5e6;
+            border-bottom: 5px solid #661B0A;
+            margin: 0 auto;
+        }
+
+        header .brand {
+            font-size: 40px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        nav button {
+            margin: 4px;
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: 2px solid #8a5a2e;
+            background-color: #f5d7a5;
+            font-weight: bold;
+            font-size: 23px;
+            cursor: pointer;
+        }
+
+        nav button:hover {
+            background-color: #f1c890;
+        }
+
+        /* ---- PARCHEMIN PRINCIPAL ---- */
+        .parchemin {
+            width: 1137px;
+            background-image: url("images/parchemin.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            margin: 20px auto;
+            padding: 40px 90px;
+            min-height: 375px;
+            font-family: "Papyrus", serif;
+            color: #661B0A;
+        }
+
+        .parchemin h2 {
+            margin-top: 20px;
+            margin-left: 300px;
+            margin-bottom: 10px;
+            font-size: 40px;
+        }
+
+        .parchemin p {
+            font-size: 30px;
+        }
+
+        /* ---- CARTE ---- */
+        .carte {
+            background-image: url("images/carte.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+
+            /* Taille FIXE EXACTE */
+            width: 1137px;
+            height: 894px;
+
+            margin: 20px auto;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        /* ---- HOTSPOTS ---- */
+        .hotspot {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            background: rgba(255, 0, 0, 0);
+            z-index: 2;
+        }
+
+        /* ---- PETITS PARCHEMINS ---- */
+        .parchemin-small {
+            display: none;
+            position: absolute;
+            top: -150px;
+            left: -100px;
+            width: 310px;
+            padding: 40px;
+            background-image: url("images/parchemin2.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            font-family: "Papyrus", serif;
+            font-size: 23px;
+            color: #661B0A;
+            line-height: 1.25;
+            z-index: 20;
+        }
+
+        .hotspot:hover .parchemin-small {
+            display: block;
+        }
+
+        .parchemin-small p {
+            margin: 0;
+        }
+
+        /* ---- MODALS ---- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
+        .modal-content {
+            background: #fff5e6;
+            margin: 50px auto;
+            padding: 20px;
+            width: 80%;
+            height: 80%;
+            overflow: auto;
+            border: 2px solid #8a5a2e;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="brand">TP4 : Prélèvement et analyse des NOx dans l'air avec<br>—Les Pirates du Labo—</div>
+        <nav>
+            <button data-step="clara">Clara</button>
+            <button data-step="mitsuki">Mitsuki</button>
+            <button data-step="asma">Asma</button>
+        </nav>
+    </header>
+
+    <div class="parchemin">
+        <h2>Observation du phénomène</h2>
+        <p>
+            La pollution atmosphérique constitue aujourd’hui un enjeu environnemental majeur. <br>Parmi les principaux polluants émis par les véhicules automobiles on identifie les oxydes d’azote (NOx), issus de la combustion dans les moteurs. <br>
+            *Cliquer sur les croix ❌ pour voir apparaitre les étapes de la démarche scientifique ;)</br>
+        </p>
+    </div>
+
+    <div class="carte">
+
+        <!-- PROBLEMATIQUE -->
+        <div class="hotspot" style="top:198px; left:305px;">
+            <div class="parchemin-small">
+                <p><strong>Problématique :</strong><br>
+                <br>Quelle méthode expérimentale permet de prélever et d’analyser les NOx afin de comparer leur concentration dans la salle de TP et à la sortie du pot d’échappement d'une voiture essence et diesel ?</p>
+            </div>
+        </div>
+
+        <!-- HYPOTHESE -->
+        <div class="hotspot" style="top:450px; left:228px;">
+            <div class="parchemin-small">
+                <p><strong>Hypothèse :</strong><br>
+                <br>On suppose que la technique de barbotage permet de prélever et d’analyser les NOx présents dans la salle de TP, le pot d’échappement d’une voiture essence et d’une voiture diesel.
+                <br>→ On s'attend à ce que la concentration en NOx soit plus élevée à la sortie du pot d’échappement que dans l’air de la salle de TP
+                <br>→  On s'attend à ce que la concentration en NOx dans la salle de TP soit inférieure à la valeur limite de la norme nationale (30 µg·m⁻³)</p>
+            </div>
+        </div>
+
+        <!-- PROTOCOLE -->
+        <div class="hotspot" style="top:380px; left:420px;" onclick="ouvrirModal('modalProtocole')">
+            <div class="parchemin-small">
+                <p><strong>Protocole :</strong><br><br>Cliquer ici pour voir le protocole :)</p>
+            </div>
+        </div>
+
+        <!-- INTERPRETATION -->
+        <div class="hotspot" style="top:280px; left:630px;" onclick="ouvrirModal('modalInterpretation')">
+            <div class="parchemin-small">
+                <p><strong>Interprétation :</strong><br><br>Cliquer ici pour voir l’interprétation :)</p>
+            </div>
+        </div>
+
+        <!-- EXPLOITATION -->
+        <div class="hotspot" style="top:445px; left:665px;" onclick="ouvrirModal('modalExploitation')">
+            <div class="parchemin-small">
+                <p><strong>Exploitation :</strong><br><br>Cliquer ici pour voir l'exploitation :)</p>
+            </div>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="hotspot" style="top:480px; left:750px;" onclick="ouvrirModal('modalConclusion')">
+            <div class="parchemin-small">
+                <p><strong>Conclusion :</strong><br><br>Cliquer ici pour voir la conclusion :)</p>
+            </div>
+        </div>
+
+    <!-- MODALS -->
+    <div id="modalProtocole" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fermerModal('modalProtocole')">&times;</span>
+            <img src="images/protocole.png" class="modal-image">
+        </div>
+    </div>
+
+    <div id="modalInterpretation" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fermerModal('modalInterpretation')">&times;</span>
+            <img src="images/interpretation.png" class="modal-image">
+        </div>
+    </div>
+
+    <div id="modalExploitation" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fermerModal('modalExploitation')">&times;</span>
+            <img src="images/conclusion.png" class="modal-image">
+        </div>
+    </div>
+
+    <div id="modalConclusion" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fermerModal('modalConclusion')">&times;</span>
+            <img src="images/fin.png" class="modal-image">
+        </div>
+    </div>
+
+    <script>
+        function ouvrirModal(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function fermerModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modals = ['modalProtocole', 'modalInterpretation', 'modalExploitation', 'modalConclusion'];
+            modals.forEach(id => {
+                const modal = document.getElementById(id);
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
